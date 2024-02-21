@@ -1,0 +1,133 @@
+
+// exports.intraction = async function (req, res) {
+//     try {
+//         const findUser = await USERS.findOne({
+//             where: {
+//                 id: req.currentUser.id
+//             }
+//         });
+
+//         if (!findUser ) {
+//             return resp.failedResponse(res, "User not found");
+//         }
+
+//         // Find users with the opposite gender and matching interests
+//         const findUsers = await USERS.findAll({
+//             where: {
+//                 gender: {
+//                     [Op.ne]: findUser.gender
+//                 },
+//                 '$users_preferences.interests$': {
+//                     [Op.overlap]: findUser.users_preferences.interests
+//                 }
+//             },
+//             include: {
+//                 model: USER_PREFERENCES,
+//                 attributes: ['interests']
+//             }
+//         });
+//         return resp.successResponse(res, "USERS_FOUND", findUsers);
+//     } catch (error) {
+//         return resp.failedResponse(res, error.message);
+//     }
+// // }
+
+
+// const findUser1 = await USERS.findOne({ where: { id: req.currentUser.id },
+//     include: {
+//         model: USER_PREFERENCES,
+//     }
+// });
+// const latitude = findUser1.latitude;
+// const longitude = findUser1.longitude;
+// const radius = findUser1.users_preference.distance_preference
+
+// const users = await USERS.findAll({
+//     attributes: [
+//         'id',
+//         'latitude',
+//         'longitude',
+//         [
+//             db.sequelize.literal(
+//                 "6371 * acos(cos(radians(" +
+//                 latitude +
+//                 ")) * cos(radians(latitude)) * cos(radians(" +
+//                 longitude +
+//                 ") - radians(longitude)) + sin(radians(" +
+//                 latitude +
+//                 ")) * sin(radians(latitude)))"
+//             ),
+//             "distance",
+//         ]
+//     ],
+//     where:
+//         db.sequelize.where(
+//             db.sequelize.literal(
+//                 "6371 * acos(cos(radians(" +
+//                 latitude +
+//                 ")) * cos(radians(latitude)) * cos(radians(" +
+//                 longitude +
+//                 ") - radians(longitude)) + sin(radians(" +
+//                 latitude +
+//                 ")) * sin(radians(latitude)))"
+//             ),
+//             "<=",
+//             `${radius}`
+//         ),
+
+//     group: ["USERS.id"],
+//     having: db.sequelize.literal(),
+// });
+// return resp.successResponse(res, "SUCCESS", users);
+// } catch (error) {
+// return resp.failedResponse(res, error.message);
+// }
+// };
+  // const findUser1 = await USERS.findOne({
+        //     where: { id: req.currentUser.id },
+        //     include: {
+        //         model: USER_PREFERENCES,
+        //     }
+        // });
+        // // const latitude = findUser1.latitude;
+        // // const longitude = findUser1.longitude;
+        // // const radius = findUser1.users_preference.distance_preference
+
+        // const users = await USERS.findAll({
+        //     attributes: [
+        //         'id',
+        //         'latitude',
+        //         'longitude',
+        //         [
+        //             db.sequelize.literal(
+        //                 "6371 * acos(cos(radians(" +
+        //                 latitude +
+        //                 ")) * cos(radians(latitude)) * cos(radians(" +
+        //                 longitude +
+        //                 ") - radians(longitude)) + sin(radians(" +
+        //                 latitude +
+        //                 ")) * sin(radians(latitude)))"
+        //             ),
+        //             "distance",
+        //         ]
+        //     ],
+        //     where:
+        //         db.sequelize.where(
+        //             db.sequelize.literal(
+        //                 "6371 * acos(cos(radians(" +
+        //                 latitude +
+        //                 ")) * cos(radians(latitude)) * cos(radians(" +
+        //                 longitude +
+        //                 ") - radians(longitude)) + sin(radians(" +
+        //                 latitude +
+        //                 ")) * sin(radians(latitude)))"
+        //             ),
+        //             "<=",
+        //             `${radius}`
+        //         ),
+
+        //     group: ["USERS.id"],
+        //     having: db.sequelize.literal(),
+        // });
+        // // return resp.successResponse(res, "SUCCESS", users);
+
